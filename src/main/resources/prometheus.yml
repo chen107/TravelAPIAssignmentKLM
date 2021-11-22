@@ -1,0 +1,10 @@
+scrape_configs:
+  - job_name: 'spring'
+    # duration of collecting data
+    scrape_interval: 15s
+    # timeout of collecting data
+    scrape_timeout: 10s
+    # path
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['30.1.229.89:9090']
