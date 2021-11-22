@@ -70,6 +70,11 @@ public class StatisticsRestController {
         return  new ResponseEntity<>(results.toString(), HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param uri uri to get the statistic metrics
+     * @return
+     */
     private Map<String,Double> handleTheStatistics(String uri){
         Map<String,Double> refactorMap = new HashMap<>();
         try {

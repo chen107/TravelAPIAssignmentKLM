@@ -14,6 +14,12 @@ import static klm.cases.df.config.ApiConfiguration.*;
 @RequestMapping(END_FARES)
 public class FaresRestController {
 
+    /**
+     *
+     * @param origin
+     * @param destination
+     * @return
+     */
     @GetMapping(END_FARES_ORIGIN_DEST)
     public HttpEntity<?> getFare(@PathVariable String origin,@PathVariable String destination){
         String uri = URI_FARES_MOCK_SYS+"/"+origin+"/"+destination;

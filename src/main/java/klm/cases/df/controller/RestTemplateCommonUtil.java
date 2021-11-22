@@ -15,12 +15,25 @@ import static klm.cases.df.config.ApiConfiguration.PSD;
 
 public class RestTemplateCommonUtil {
 
+    /**
+     *
+     * @param uri uri of mock api
+     * @param isAuth if authentication is needed
+     * @return
+     */
     public static String restTemplateCommonUtil(String uri,Boolean isAuth){
         RestTemplate restTemplate = new RestTemplate();
         if (isAuth) restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor(USER,PSD));
         return restTemplate.getForObject(uri, String.class);
     }
 
+    /**
+     * sort json array based on key
+     * @param inArr input json array
+     * @param field field to be ordered
+     * @param isAsc if it is ascending order
+     * @return ordered json array
+     */
     public static JSONArray sortJSONArrayByField(JSONArray inArr, String field,boolean isAsc){
         JSONArray sortedJsonArray = new JSONArray();
         List<JSONObject> jsonValues = new ArrayList<JSONObject>();

@@ -17,6 +17,14 @@ import static klm.cases.df.config.ApiConfiguration.*;
 @RequestMapping(END_AIRPORTS)
 public class AirportsRestController {
 
+    /**
+     *
+     * @param size page size
+     * @param pageNumber page number
+     * @param orderby a string of orderby query, e.g. code desc,name asc
+     * @return
+     * @throws Exception
+     */
     @GetMapping
     public HttpEntity<?> getAllAirports(@RequestParam(value=SIZE,required = false) int size,
                                         @RequestParam(value=PAGE,required = false) int pageNumber,
@@ -41,6 +49,11 @@ public class AirportsRestController {
         return  new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param code
+     * @return
+     */
     @GetMapping(END_AIRPORTS_CODE)
     public HttpEntity<?> getAnAirport(@PathVariable String code){
         String uri = URI_AIRPORTS_MOCK_SYS+"/"+code;
@@ -48,6 +61,12 @@ public class AirportsRestController {
         return  new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param result original response data from mock system
+     * @param orderby orderby query string
+     * @return ordered response
+     */
     private String handleOrderby(String result,String orderby){
         JSONObject resultObj = new JSONObject(result);
         JSONObject embeddedObj = new JSONObject(result).getJSONObject(JSON_NODE_EMBEDDED);
